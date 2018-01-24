@@ -15,10 +15,10 @@ node ('opsschool-slaves'){
     stage('Build'){
         sh 'sudo docker build --no-cache -t localhost:5000/opsschool_dummy_app:latest .'
         sh 'sudo docker push localhost:5000/opsschool_dummy_app:latest'
-        sh 'sudo docker-compose stop'
+        sh 'docker-compose stop && docker-compose rm -f || true'
 
-        sh 'sudo docker rm -f opsschool_dummy_app || true'
-        sh 'sudo docker rm -f dummyappbuildworkflow_nginx_1 || true'
+        //sh 'sudo docker rm -f opsschool_dummy_app || true'
+        //sh 'sudo docker rm -f dummyappbuildworkflow_nginx_1 || true'
 
     }
 
